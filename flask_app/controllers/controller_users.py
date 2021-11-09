@@ -49,8 +49,10 @@ def login():
 
 @app.route('/dashboard/')
 def dashboard():
-    if  session:
+    if session:
         return render_template('dashboard.html')
+    else: 
+        return redirect ('/')
 
 @app.route('/logout')
 def logout():
