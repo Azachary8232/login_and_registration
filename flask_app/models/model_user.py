@@ -46,23 +46,32 @@ class User:
             is_valid = False
         return is_valid
 
-    @classmethod
-    def create(cls,data):
-        query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
-        user_id = connectToMySQL(model_db).query_db(query,data)
-        return user_id
 
 
     # ***CREATE***
 
 
+    @classmethod
+    def create(cls,data):
+        print(data)
+        print(model_db)
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
+        user_id = connectToMySQL('login_and_registration').query_db(query,data)
+        return user_id
 
 
 
 
     # ***Retreive***
 
-
+    @classmethod
+    def get_one_by_email(cls,data):
+        query = "SELECT * FROM users WHERE email = %(email)s;"
+        result = connectToMySQL("login_and_registration").query_db(query,data)
+        # Didn't find a matching user
+        if len(result) < 1:
+            return False
+        return cls(result[0])
 
 
 
@@ -76,3 +85,13 @@ class User:
 
 
     # ***Delete***
+
+    @classmethod
+    def delete(cls,data):
+        id = {
+            'id' : data
+        }
+        query = 'DELETE FROM users WHERE id = %(id)s';
+        connectToMySQL('login_and_registration').query_db(query, id)
+        return print("User Deleted")
+
