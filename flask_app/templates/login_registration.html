@@ -22,26 +22,68 @@
                     <input type="text" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default" name="first_name">
                 </div>
+                {% with messages = get_flashed_messages(category_filter= 'user_first_name') %}    
+                    {% if messages %}                           
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Last Name</span>
                     <input type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default" name="last">
+                        aria-describedby="inputGroup-sizing-default" name="last_name">
                 </div>
+                {% with messages = get_flashed_messages(category_filter= 'user_last_name') %}    
+                    {% if messages %}                           
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
                     <input type="text" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default" name="email">
                 </div>
+                {% with messages = get_flashed_messages(category_filter= 'user_email') %}    
+                    {% if messages %}                           
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% with messages = get_flashed_messages(category_filter= 'user_invalid_email') %}    
+                    {% if messages %}                           
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
                     <input type="text" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default" name="password">
                 </div>
+                {% with messages = get_flashed_messages(category_filter= 'user_password') %}    
+                    {% if messages %}                           
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Confirm Password</span>
                     <input type="text" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default" name="confirm_password">
                 </div>
+                {% with messages = get_flashed_messages(category_filter= 'user_confirm_password') %}    
+                    {% if messages %}                           
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <button type="submit" class="btn btn-primary mt-5">Register</button>
             </form>
         </div>

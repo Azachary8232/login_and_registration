@@ -13,12 +13,11 @@ def create():
         if not User.vaildate_info(request.form):
             return redirect('/')
         data = {
-            # 'id' : id
             "first_name" : request.form['first_name'],
             "last_name" : request.form['last_name'],
             "email" : request.form['email'],
             "password" : request.form['password']
 
         }
-        User.create(data)
+        id = User.create(data)
         return redirect('/dashboard')
